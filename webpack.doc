@@ -11,7 +11,8 @@ module.exports = {
 };
 
 "build": "webpack" to package.json
-
+"start": "webpack serve --mode development",
+"build": "webpack --mode production"
 3. code splitting chia tách file chung
 optimization: {
     splitChunks: {
