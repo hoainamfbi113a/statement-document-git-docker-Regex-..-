@@ -1,0 +1,132 @@
+1. Cài đặt webpack: yarn add webpack webpack-cli --dev
+2. cấu hình file webpack.config.js
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
+
+"build": "webpack" to package.json
+
+3. code splitting chia tách file chung
+optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  }
+
+4. sắp xếp nội dung html: yarn add html-webpack-plugin --dev
+edit webpack.config.js 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Output Management'
+    })
+  ],
+
+5.CleanWebpackPlugin dọn dẹp xoá file không sử dụng
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Output Management'
+    })
+  ],
+
+6. cache js
+
+filename: '[name].[contenthash].js',
+
+optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
+  }
+
+7. source map : tìm lỗi ở file nào
+devtool: 'inline-source-map'
+
+8. css loader và : yarn add style-loader css-loader mini-css-extract-plugin optimize-css-assets-webpack-plugin --dev
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+optimization: {
+    minimizer: [new OptimizeCSSAssetsPlugin({})],
+  },
+
+plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Output Management'
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'style.min.css'
+    })
+  ],
+
+module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+            MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
+      }
+    ]
+  }
+
+9. webpack dev server: dùng để run loacalhost yarn add webpack-dev-server --dev
+
+"start": "webpack-dev-server --open",
+
+10. webpack với reactjs
+yarn add babel-loader@7 babel-core babel-preset-env babel-preset-react --dev
+yarn add react react-dom
+create file .babelrc : {'presets':['env', 'react']}
+
+index.html 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Output Management</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <section>
+      <h2>Đây là Headline</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean massa dolor, auctor ac volutpat id, molestie et velit. Etiam lectus massa, fringilla non egestas a, tristique vel sapien. </p>
+    </section>
+    <script type="text/javascript" src="main.min.js"></script>
+  </body>
+</html>
+
+src/index.js
+
+class App extends React.Component {
+  render() {
+    return <h1>Hello React!</h1>;
+  }
+}
+ReactDOM.render(<App />, document.getElementById("root"));
+webpack.config.js
+ module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      }
+    ]
+  }
