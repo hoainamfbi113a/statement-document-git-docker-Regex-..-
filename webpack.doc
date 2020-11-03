@@ -34,7 +34,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Output Management'
+      template: './index.html'
     })
   ],
 
