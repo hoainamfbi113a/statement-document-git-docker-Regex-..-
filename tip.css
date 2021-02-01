@@ -1,1 +1,38 @@
 
+/* HTML */
+/* tren xuong duoi: dung the layout+ class
+, ngoai vao trong,: dùng container hay container-fluf,
+ trai sang phai: dung class row, column, roi class(BEM)
+  */
+
+  /* CSS */
+  /* block css  */
+
+  .selector {
+    /* positiononting */
+    position: absolute;
+    z-index: 10;
+    top:0;
+    right:0;
+    
+    /* display & Box Model */
+    display: inline-block;
+    overflow: hidden;
+    height: 100px;
+    margin: 10px;
+    border: 10px solid 5px;
+    
+    /* color */
+    background-color: #fff;
+    color: #444;
+    
+    /* Text */
+    font-family :'Courier New', Courier, monospace;
+    font-size: 16px;
+    line-height: 10px;
+    text-align: center;
+    
+    /* other transition, animation */
+    cursor: pointer;
+    transition: all .35s ease-in 0s;
+}
