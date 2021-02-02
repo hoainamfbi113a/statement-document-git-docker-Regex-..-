@@ -1,1 +1,2 @@
 khi làm việc với reducer(array, object) thì cần clone ra để xử lý.. với giá trị (number,...) thì không cần
+khi return thì cần giữ lại các state hiện tại và cập nhật lại chỗ giá trị thay đổi
