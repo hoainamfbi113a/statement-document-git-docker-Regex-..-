@@ -1,0 +1,1 @@
+khi làm việc với reducer(array, object) thì cần clone ra để xử lý.. với giá trị (number,...) thì không cần
