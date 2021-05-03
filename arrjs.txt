@@ -1,0 +1,23 @@
+// push 
+let arr = [8,4,6,7];
+arr.push(5);
+console.log(arr);
+// pop 
+arr.pop();
+console.log(arr)
+// every
+console.log(arr.every((item)=>{return item %2 ==0}))
+console.log(arr.some(item=> item%2 == 0))
+// map
+console.log(arr.map(item=> item*item))
+// find
+console.log(arr.find(item=> item==7))
+// reduce
+console.log(arr.reduce((total, item)=> total + item, 100))
+// splice 
+console.log(arr)
+console.log(arr.splice(1,2))
+// slice
+console.log(arr)
+console.log(arr.slice(1,2))
+console.log(arr.includes(8))
