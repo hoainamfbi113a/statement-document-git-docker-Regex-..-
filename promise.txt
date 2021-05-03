@@ -1,0 +1,19 @@
+let money = 1001 ; 
+let buyCake = (title) => {
+	let myPromise = new Promise((resolve, reject)=>{
+    	if(money> 1000){
+        	return resolve (title)
+        } else {
+        	return reject("Ban khong du tien mua")
+        }
+    })
+    return myPromise
+}
+
+let promise = buyCake("Mua banh sinh nhat")
+promise.then((res)=>{
+	console.log(res);
+})
+.catch(err=>{
+  console.log(err)
+})
